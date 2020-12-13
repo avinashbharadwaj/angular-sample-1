@@ -1,0 +1,59 @@
+<div>
+    <div style="text-align: center;">
+        <h1>Akshara Shree High School</h1>
+        <h3>Students Data</h3>
+    </div>
+    <div>
+        <button (click)="modifyData('Add')" style=" position: relative; left: 68%; margin-bottom: 10px;">Add Student</button>
+
+        <table class="customTable">
+            <thead>
+                <tr>
+                    <th>Sl. No.</th>
+                    <th *ngFor="let head of tableData.headerContent">{{head}}</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of tableData.bodyContent; let i = index">
+                    <td>{{i + 1}}</td>
+                    <td *ngFor="let head of tableData.headerContent">{{row[head]}}</td>
+                    <td>
+                        <button (click)="modifyData('Edit',i)">Edit</button> &nbsp;
+                        <button (click)="deleteStudent(i)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div>
+            <span class="close" (click)="closeModal()">&times;</span>
+            <h2>{{modalHeader}} Student</h2>
+        </div>
+        <div class="p-10">
+            <label for="">Name:</label> &nbsp;
+            <input type="text" [(ngModel)]="modelData.Name">
+        </div>
+        <div class="p-10">
+            <label for="">CGPA:</label>&nbsp;
+            <input type="text" [(ngModel)]="modelData.CGPA">
+        </div>
+        <div class="p-10">
+            <label for="">City:</label>&nbsp;
+            <input type="text" [(ngModel)]="modelData.City">
+        </div>
+        <div class="p-10">
+            <label for="">YOP:</label>&nbsp;
+            <input type="text" [(ngModel)]="modelData.YOP">
+        </div>
+        <button (click)="save(modalHeader)">save</button> &nbsp;
+        <button (click)="closeModal()">Cancel</button>
+    </div>
+
+</div>
